@@ -1,0 +1,15 @@
+.block {
+    box-sizing: border-box;
+    width: 90px;
+    height: 90px;
+    background-color: green;
+    margin: 0 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid blue;
+    border-radius: 4px;
+    user-select: none;
+    font-size: 200%;
+}

@@ -1,0 +1,59 @@
+.settingsWrapper {
+    position: absolute;
+    top: 10px;
+    width: 220px;
+    height: 100vh;
+    border-left: 2px solid white;
+    padding: 10px 10px 10px 16px;
+}
+
+.settingsWrapper_hide {
+    right: -175px;
+}
+
+.settingsWrapper_show {
+    right: 5px;
+}
+
+.settings_hide {
+    display: none;
+}
+
+.settings_show {
+    display: block;
+}
+
+.settings_item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.settings_title {
+    width: 98%;
+    text-align: center;
+    font-size: 150%;
+}
+
+.settings_symbols {
+    display: inline-block;
+    text-align: center;
+    font-size: 200%;
+    user-select: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+.settings_symbols_active {
+    display: inline-block;
+    text-align: center;
+    font-size: 200%;
+    user-select: none;
+    cursor: pointer;
+    margin: 0;
+    font-weight: bold;
+}
+
+.btn button {
+    font-size: 180%;
+}
