@@ -6,6 +6,7 @@ class Settings extends Component {
     state = {
         settingsVisible: false,         // Подумать про fadeIn - fadeOut...
         playerSymbol: 'x',
+        botSymbol: 'o',
         fieldSize: 3,
     }
 
@@ -16,11 +17,13 @@ class Settings extends Component {
     }
 
     change_playerSymbol = () => {
-        const newSymbol = this.state.playerSymbol === 'x' ? 'o' : 'x'
+        const newPlayerSymbol = this.state.playerSymbol === 'x' ? 'o' : 'x'
+        const newBotSymbol = newPlayerSymbol === 'x' ? 'o' : 'x'
         this.setState({
-            playerSymbol: newSymbol
+            playerSymbol: newPlayerSymbol,
+            botSymbol: newBotSymbol
         })
-        this.props.onSettingsChange({'symbol':newSymbol, 'size':this.state.fieldSize})
+        this.props.onSettingsChange({'playerSymbol':newPlayerSymbol, 'fieldSize':this.state.fieldSize, 'botSymbol':newBotSymbol, 'playerStep': 'true'})
     }
 
     change_fieldSize = () => {
@@ -28,11 +31,11 @@ class Settings extends Component {
         this.setState({
             fieldSize: newSize
         })
-        this.props.onSettingsChange({'symbol':this.state.playerSymbol, 'size':newSize})
+        this.props.onSettingsChange({'playerSymbol':this.state.playerSymbol, 'fieldSize':newSize, 'botSymbol':this.state.botSymbol, 'playerStep': 'true'})
     }
 
     render () {
-        const other_playerSymbol   = this.state.playerSymbol === 'x' ? 'o' : 'x'                             // {console.log('Символ Settings =>', this.state.playerSymbol)}
+        const other_playerSymbol   = this.state.playerSymbol === 'x' ? 'o' : 'x'
         const other_fieldSize   = this.state.fieldSize === 3 ? 5 : 3
         const classSettingsWrapper = this.state.settingsVisible ? 'settingsWrapper settingsWrapper_show' : 'settingsWrapper settingsWrapper_hide'
         const classSettings        = this.state.settingsVisible ? 'settings_show' : 'settings_hide'

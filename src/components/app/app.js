@@ -1,25 +1,37 @@
 import React, {useState} from 'react'
 import './app.css'
 import {Provider as SettingsProvider} from '../../contexts/settings'
-import Field from '../field'
+import Wrapper from '../wrapper'
 import Settings from '../settings'
 
 function App() {
-  const [settings, setSettings] = useState({'symbol':'x', 'size':3})
+  const [settings, setSettings] = useState({
+    'playerSymbol': 'x',
+    'fieldSize': 3,
+    'botSymbol': 'o',
+    'playerStep': 'true',
+  })
 
-  const onSettingsChange = (settings) => {
-    setSettings(settings)
+  const onSettingsChange = (newSettings) => {
+    setSettings(newSettings)
   }
 
-  const checkResult = result => {
-    setSettings(result)
+  const reloadApp = () => {
+    setSettings( { ...settings} )
   }
 
   return (
     <div className="app-wrapper">
       <SettingsProvider value={settings}>
-        <Field fieldSize={settings.size} checkResult={checkResult} />
+
+        <Wrapper settings={settings}/>
+
         <Settings onSettingsChange={onSettingsChange}/>
+
+          <div className='reload' onClick={reloadApp}>
+            Начать заново
+          </div>
+
       </SettingsProvider>
     </div>
   )

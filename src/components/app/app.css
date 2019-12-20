@@ -1,5 +1,6 @@
 .app-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: antiquewhite;
@@ -8,7 +9,11 @@
   height: 100vh;
 }
 
-
+.reload {
+  font-size: 135%;
+  cursor: pointer;
+  margin-top: 50px;
+}
 
 
 

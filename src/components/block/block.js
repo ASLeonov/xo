@@ -1,52 +1,38 @@
 import React, {useState, useEffect} from 'react'
 import './block.css'
-import {Consumer as SettingsConsumer} from '../../contexts/settings'
+import GetContext from '../../decorators/getContext'
 
 function Block(props) {
-    const [matchType, setMatchType] = useState('-')
-    const {resultObj, blockId} = props
-
-    const thisBlock = resultObj[blockId]
+    const {blockKey, blockId, playerStep, onChangeStep} = props
+    const {playerSymbol, botSymbol} = props.settings
+    const [thisBlockValue, setThisBlockValue] = useState('-')
 
     useEffect( () => {
-        if (matchType !== '-') {
-            thisBlock.value = matchType
-            console.log(resultObj)
-            checkResult()
-        }
-    })
-
-    const checkResult = () => {
-
-        const arr = []
-            for (const key in resultObj) {
-                if (resultObj[key].value === matchType) { 
-                    arr.push( resultObj[key].id.slice(0, resultObj[key].id.indexOf("-")) )
-                }
-            }
-
-        for (const item of arr) {
-            const sovp = arr.filter( value => value === item )
-            if (sovp.length >= 3) return console.log('Вы победили!!!')    
-        }
-    }
+        if (thisBlockValue !== blockKey.value) setThisBlockValue(blockKey.value)
+        // if (thisType !== playerSymbol && thisType !== matchType) return setMatchType(thisType)
+        // if (thisType === playerSymbol && thisType !== matchType) return setMatchType(playerSymbol)
+    } )
 
     return (
-        <SettingsConsumer>
-            { playerSymbol =>
-                <div
-                    className = 'block'
-                    onClick = {
-                        () => {
-                            matchType !== 'x' && matchType !== 'o' && setMatchType(playerSymbol.symbol) 
-                        }
+        <div
+            className = 'block'
+            onClick = {
+                () => {
+                    if (playerStep && thisBlockValue !== playerSymbol && thisBlockValue !== botSymbol) {
+                        blockKey.value = playerSymbol
+                        onChangeStep(blockId)
+                        setThisBlockValue(blockKey.value)
+                        // 
+                    // console.log(resultObj)
                     }
-                >            
-                    {matchType}
-                </div>
+                }
             }
-        </SettingsConsumer>
+        >            
+            {thisBlockValue}
+            {/* {console.log('render block')} */}
+        </div>
     )
 }
 
-export default Block
+// just example of decorator, which connect to Context without using <Consumer> in component; it's not best way in this case;
+export default GetContext(Block) 

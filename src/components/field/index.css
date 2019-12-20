@@ -1,8 +1,21 @@
 .field {
     display: flex;
+    flex-direction: column;
+}
+
+.field_body {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background-color: red;
+}
+
+.field_footer {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
 }
