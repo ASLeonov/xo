@@ -13,7 +13,7 @@ function CheckResults(props) {
 
     stepSymbols = playerStep ? allPlayerSymbols : allBotSymbols
 
-    console.log('obj in check =>', resultObj,'\nplayerStep =>', playerStep, '\nstepSymbols =>', stepSymbols)
+    // console.log('obj in check =>', resultObj,'\nplayerStep =>', playerStep, '\nstepSymbols =>', stepSymbols)
 
     if (Object.keys(allPlayerSymbols).length >= 3 || Object.keys(allBotSymbols).length >= 3) {
 
@@ -22,7 +22,6 @@ function CheckResults(props) {
             const line_index = Number(key.slice(0, 1))
             const line = Object.values(stepSymbols).filter(item => item.x === line_index).map( item => item['y'] )
                 if (line.length >= 3) {
-                    // console.log(`${playerStep ? 'PLAYER': 'BOT'} => ${line}`)
                     for (let i = 0; i < line.length; i++) {
                         if (line[i+1]-line[i] === 1 && line[i+2]-line[i] === 2) res = `${playerStep ? 'PLAYER': 'BOT'} WIN !!!`
                     }
@@ -31,16 +30,20 @@ function CheckResults(props) {
             const column_index = Number(key.slice(2, 3))
             const column = Object.values(stepSymbols).filter(item => item.y === column_index).map( item => item['x'] )
                 if (column.length >= 3) {
-                    // console.log(`${playerStep ? 'PLAYER': 'BOT'} => ${column}`)
                     for (let i = 0; i < column.length; i++) {
                         if (column[i+1]-column[i] === 1 && column[i+2]-column[i] === 2) res = `${playerStep ? 'PLAYER': 'BOT'} WIN !!!`
                     }
-                }           
+                }
+
+            // diag...
+
+            if (!res && Object.keys(allPlayerSymbols).length + Object.keys(allBotSymbols).length === Object.keys(resultObj).length) {
+                res = 'no_winner'
+            }
         }
     }
-
+    // console.log(Object.keys(allPlayerSymbols).length, Object.keys(allBotSymbols).length, Object.keys(resultObj).length)
     return res ? res : false
-    
 }
 
 export default CheckResults

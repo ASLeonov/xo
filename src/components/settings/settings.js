@@ -56,6 +56,7 @@ class Settings extends Component {
                             <p className='settings_symbols'onClick={this.change_fieldSize}>{other_fieldSize}</p>
                         </div>
                     </div>
+                    {console.log('render settings')}
                 </div>
             )
     }

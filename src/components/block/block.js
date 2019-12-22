@@ -29,7 +29,7 @@ function Block(props) {
             }
         >            
             {thisBlockValue}
-            {/* {console.log('render block')} */}
+            {console.log('render block', blockId, playerStep)}
         </div>
     )
 }

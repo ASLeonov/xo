@@ -1,14 +1,18 @@
 import React from 'react'
 import Field from '../field'
-// import Block from '../block'
 
 function Wrapper(props) {
-    const {fieldSize, playerStep} = props.settings
+    const {fieldSize} = props.settings
+    const reloadApp = props.reloadApp
 
-    const blocks = []
     const resultObj = {}
     const freeBlocks = {}
-    const thisGameState = {}
+    const blocks = {}
+
+    const fieldStyleCSS = {
+        'width': fieldSize*100,
+        'height': fieldSize*100,
+    }
 
     for (let x = 0; x < fieldSize; x++) {
         for (let y = 0; y < fieldSize; y++) {
@@ -24,18 +28,15 @@ function Wrapper(props) {
             
     for (let key in resultObj) freeBlocks[key] = ''
 
-    thisGameState['result'] = false
-    thisGameState['winner'] = false
-
     return (
         <div>
             <Field
-                resultObj={resultObj}
                 fieldSize={fieldSize}
-                playerStep={playerStep}
-                blocks={blocks}
+                fieldStyleCSS={fieldStyleCSS}
+                resultObj={resultObj}
                 freeBlocks={freeBlocks}
-                gameState={thisGameState}
+                blocks={blocks}
+                reloadApp={reloadApp}
             />
             {console.log('render wrapper')}
         </div>

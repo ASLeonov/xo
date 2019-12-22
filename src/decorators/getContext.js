@@ -4,15 +4,17 @@ import {Consumer} from '../contexts/settings'
 function GetContext(OriginalComponent) {
     // console.log('render Context decorator ---')
     return props => (
+        <div>
         <Consumer>
             {
-                settings  => 
+                settings => 
                     <OriginalComponent
                         {...props}
                         settings={settings}
                     />
             }
         </Consumer>
+        </div>
     ) 
 }
 

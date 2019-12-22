@@ -9,30 +9,19 @@ function App() {
     'playerSymbol': 'x',
     'fieldSize': 3,
     'botSymbol': 'o',
-    'playerStep': 'true',
+    'playerStep': true,
   })
+  const onSettingsChange = (newSettings) => setSettings(newSettings)
 
-  const onSettingsChange = (newSettings) => {
-    setSettings(newSettings)
-  }
-
-  const reloadApp = () => {
-    setSettings( { ...settings} )
-  }
+  const reloadApp = () => setSettings( { ...settings} )
 
   return (
     <div className="app-wrapper">
       <SettingsProvider value={settings}>
-
-        <Wrapper settings={settings}/>
-
+        <Wrapper settings={settings} reloadApp={reloadApp}/>
         <Settings onSettingsChange={onSettingsChange}/>
-
-          <div className='reload' onClick={reloadApp}>
-            Начать заново
-          </div>
-
       </SettingsProvider>
+      {console.log('render App')}
     </div>
   )
 }
