@@ -8,7 +8,7 @@ function Field(props) {
     const {fieldSize, fieldStyleCSS, resultObj, freeBlocks, blocks, reloadApp} = props
     const {playerSymbol, botSymbol} = props.settings
 
-    const [playerStep, setPlayerStep] = useState(true)
+    const [playerStep, setPlayerStep] = useState(props.settings.playerStep)
     const [gameState, setGameState] = useState({'result':false, 'winner':false})
 
     const onChangeStep = (blockId) => {
@@ -24,11 +24,9 @@ function Field(props) {
     }
 
     if (Object.keys(blocks).length === 0 && playerStep === props.settings.playerStep) {
-        console.log('create blocks...', playerStep)
         for (let x = 0; x < fieldSize; x++) {
             for (let y = 0; y < fieldSize; y++) {
                 const key = `${x+1}-${y+1}`
-                // blocks.push(
                     blocks[key] =
                         <Block
                             key = {key}
@@ -37,15 +35,14 @@ function Field(props) {
                             playerStep = {playerStep}
                             onChangeStep = {onChangeStep}
                         />
-                // )
             }
         }
     }
 
     useEffect(() => {   // set initial state for playerStep after 1-st render; set all initial states of component when reload App
         setGameState({'result':false, 'winner':false})
-        setPlayerStep(true)
-    }, [props])
+        setPlayerStep(props.settings.playerStep)
+    }, [props.settings])
 
     useEffect(() => {
         if (playerStep === false && !gameState.result) {
@@ -59,9 +56,8 @@ function Field(props) {
                         blocks[need_value] =
                             <Block
                                 key = {need_value}
-                                blockKey ={resultObj[need_value]}
+                                blockKey = {resultObj[need_value]}
                                 blockId = {need_value}
-                                playerStep = {playerStep}
                                 onChangeStep = {onChangeStep}
                             />
                     }
@@ -75,7 +71,10 @@ function Field(props) {
         }
     })
 
-    const info_string_1 = !gameState.result ? ( playerStep ? `It's your step` : 'Bot is active...') : null
+    const info_string_1 = 
+        !gameState.result 
+            ? ( playerStep ? `It's your step` : 'Bot is active...') 
+                : null
     const info_string_2 = 
         gameState.result ? 
             (gameState.winner !== 'no_winner' ? `THE ${gameState.winner} WIN !!!` : 'NO WINNER !') 
@@ -84,18 +83,23 @@ function Field(props) {
         ( playerStep || (!playerStep && gameState.result) ) 
             ? <div className='reload' onClick={reloadApp}>New game</div> 
                 : <div className='reload'></div>
+    const blockedBlockes = 
+    ( !playerStep )
+        ? <div className='field_body field_body__blocked' style={fieldStyleCSS}></div>
+            : null
 
     return (
         <div className='field' >
             <div className='field_body' style={fieldStyleCSS}>
-                {Object.values(blocks)}
-                {console.log('render field', resultObj, '\n', playerStep)}
+                {Object.values({...blocks})}
             </div>
+                {blockedBlockes}
             <div className='field_footer'>
                 <p>{info_string_1}</p>
                 <p style={{fontWeight:'bold'}}>{info_string_2}</p>
             </div>
-            {reloadBtn}
+                {reloadBtn}
+                {console.log('render field')}
         </div>
     )
 }

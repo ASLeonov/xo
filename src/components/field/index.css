@@ -1,6 +1,7 @@
 .field {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .field_body {
@@ -10,6 +11,13 @@
     justify-content: center;
     align-items: center;
     background-color: red;
+}
+
+.field_body__blocked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
 }
 
 .field_footer {
