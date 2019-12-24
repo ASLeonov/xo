@@ -11,10 +11,35 @@ function Field(props) {
     const [playerStep, setPlayerStep] = useState(props.settings.playerStep)
     const [gameState, setGameState] = useState({'result':false, 'winner':false})
 
-    const onChangeStep = (blockId) => {
+    const matchBlockEndGame = checkResult => {
+        for (const key in checkResult) {
+            blocks[key] =
+                <Block
+                    key = {key}
+                    blockKey ={resultObj[key]}
+                    blockId = {key}
+                    onChangeStep = {onChangeStep}
+                    style = {'block block_endGame'}
+                />
+        }
+    }
+
+    const createBlock = key => {
+        blocks[key] =
+            <Block
+                key = {key}
+                blockKey ={resultObj[key]}
+                blockId = {key}
+                onChangeStep = {onChangeStep}
+                style = {'block'}
+            />
+    }
+
+    const onChangeStep = blockId => {
         const checkResult = CheckResults({playerStep, playerSymbol, botSymbol, resultObj})
         if (checkResult) {
             if (checkResult === 'no_winner') return setGameState({'result':true, 'winner':'no_winner'})
+            matchBlockEndGame(checkResult)
             setGameState({'result':true, 'winner':'PLAYER'})
             setPlayerStep(false)
         } else {
@@ -27,14 +52,7 @@ function Field(props) {
         for (let x = 0; x < fieldSize; x++) {
             for (let y = 0; y < fieldSize; y++) {
                 const key = `${x+1}-${y+1}`
-                    blocks[key] =
-                        <Block
-                            key = {key}
-                            blockKey ={resultObj[key]}
-                            blockId = {key}
-                            playerStep = {playerStep}
-                            onChangeStep = {onChangeStep}
-                        />
+                    createBlock(key)
             }
         }
     }
@@ -53,17 +71,13 @@ function Field(props) {
                         const need_value = all_keys[random_item]
                         delete freeBlocks[need_value]
                         resultObj[need_value].value = botSymbol
-                        blocks[need_value] =
-                            <Block
-                                key = {need_value}
-                                blockKey = {resultObj[need_value]}
-                                blockId = {need_value}
-                                onChangeStep = {onChangeStep}
-                            />
+                            createBlock(need_value)
                     }
                 const checkResult = CheckResults({playerStep, playerSymbol, botSymbol, resultObj})
                 if (checkResult) {
-                    checkResult !== 'no_winner' ? setGameState({'result':true, 'winner':'BOT'}) : setGameState({'result':true, 'winner':'no_winner'})
+                    if (checkResult === 'no_winner') return setGameState({'result':true, 'winner':'no_winner'})
+                    matchBlockEndGame(checkResult)
+                    setGameState({'result':true, 'winner':'BOT'})
                 } else {
                     setPlayerStep(true)
                 }
@@ -75,14 +89,17 @@ function Field(props) {
         !gameState.result 
             ? ( playerStep ? `It's your step` : 'Bot is active...') 
                 : null
+
     const info_string_2 = 
         gameState.result ? 
             (gameState.winner !== 'no_winner' ? `THE ${gameState.winner} WIN !!!` : 'NO WINNER !') 
                 : null
+
     const reloadBtn = 
         ( playerStep || (!playerStep && gameState.result) ) 
             ? <div className='reload' onClick={reloadApp}>New game</div> 
                 : <div className='reload'></div>
+
     const blockedBlockes = 
     ( !playerStep )
         ? <div className='field_body field_body__blocked' style={fieldStyleCSS}></div>
@@ -99,7 +116,7 @@ function Field(props) {
                 <p style={{fontWeight:'bold'}}>{info_string_2}</p>
             </div>
                 {reloadBtn}
-                {console.log('render field')}
+                {/* {console.log('render field')} */}
         </div>
     )
 }

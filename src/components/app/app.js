@@ -7,11 +7,11 @@ import Settings from '../settings'
 function App() {
   const [settings, setSettings] = useState({
     'playerSymbol': 'x',
-    'fieldSize': 3,
+    'fieldSize': 3,   // max field size === 5; for increase this value -> necesarry correct checkResult function
     'botSymbol': 'o',
     'playerStep': true,
   })
-  const onSettingsChange = (newSettings) => setSettings(newSettings)
+  const onSettingsChange = newSettings => setSettings(newSettings)
 
   const reloadApp = () => setSettings( { ...settings} )
 
@@ -21,7 +21,7 @@ function App() {
         <Wrapper settings={settings} reloadApp={reloadApp}/>
         <Settings onSettingsChange={onSettingsChange}/>
       </SettingsProvider>
-      {console.log('render App')}
+      {/* {console.log('render App')} */}
     </div>
   )
 }

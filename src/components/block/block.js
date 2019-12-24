@@ -3,17 +3,19 @@ import './block.css'
 import GetContext from '../../decorators/getContext'
 
 function Block(props) {
-    const {blockKey, blockId, onChangeStep} = props
+    const {blockKey, blockId, onChangeStep, style} = props
     const {playerSymbol, botSymbol} = props.settings
     const [thisBlockValue, setThisBlockValue] = useState('-')
 
     useEffect(() => {
         if (thisBlockValue !== blockKey.value) setThisBlockValue(blockKey.value)
-    })
+    }, [blockKey.value, thisBlockValue])
+
+    const player_style = (thisBlockValue === playerSymbol) ? 'player_style' : ''
 
     return (
         <div
-            className = 'block'
+            className = {style + " " + player_style}
             onClick = {
                 () => {
                     if (thisBlockValue !== playerSymbol && thisBlockValue !== botSymbol) {
@@ -25,7 +27,7 @@ function Block(props) {
             }
         >            
             {thisBlockValue}
-            {console.log('render block', blockId)}
+            {/* {console.log('render block', blockId)} */}
         </div>
     )
 }

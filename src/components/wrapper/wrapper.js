@@ -38,7 +38,7 @@ function Wrapper(props) {
                 blocks={blocks}
                 reloadApp={reloadApp}
             />
-            {console.log('render wrapper')}
+            {/* {console.log('render wrapper')} */}
         </div>
     )
 }
