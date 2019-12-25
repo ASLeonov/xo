@@ -7,7 +7,7 @@ import Settings from '../settings'
 function App() {
   const [settings, setSettings] = useState({
     'playerSymbol': 'x',
-    'fieldSize': 3,   // max field size === 5; for increase this value -> necesarry correct checkResult function
+    'fieldSize': 3,   // max field size === 5; for increase this value -> necesarry correct checkResult & botStep functions
     'botSymbol': 'o',
     'playerStep': true,
   })

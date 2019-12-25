@@ -3,6 +3,7 @@ import './index.css'
 import Block from '../block'
 import GetContext from '../../decorators/getContext'
 import CheckResults from '../../selectors/checkResults'
+import {BotStep} from '../../selectors/botStep'
 
 function Field(props) {
     const {fieldSize, fieldStyleCSS, resultObj, freeBlocks, blocks, reloadApp} = props
@@ -28,7 +29,7 @@ function Field(props) {
         blocks[key] =
             <Block
                 key = {key}
-                blockKey ={resultObj[key]}
+                blockKey = {resultObj[key]}
                 blockId = {key}
                 onChangeStep = {onChangeStep}
                 style = {'block'}
@@ -65,14 +66,7 @@ function Field(props) {
     useEffect(() => {
         if (playerStep === false && !gameState.result) {
             setTimeout(() => {
-                const random_item = Math.floor(Math.random()*Object.keys(freeBlocks).length)
-                const all_keys = Object.keys(freeBlocks)
-                    if (all_keys.length > 0) {
-                        const need_value = all_keys[random_item]
-                        delete freeBlocks[need_value]
-                        resultObj[need_value].value = botSymbol
-                            createBlock(need_value)
-                    }
+                BotStep({fieldSize, freeBlocks, resultObj, playerSymbol, botSymbol, createBlock})
                 const checkResult = CheckResults({playerStep, playerSymbol, botSymbol, resultObj})
                 if (checkResult) {
                     if (checkResult === 'no_winner') return setGameState({'result':true, 'winner':'no_winner'})
