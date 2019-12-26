@@ -6,9 +6,10 @@ import Settings from '../settings'
 
 function App() {
   const [settings, setSettings] = useState({
-    'playerSymbol': 'x',
-    'fieldSize': 3,   // max field size === 5; for increase this value -> necesarry correct checkResult & botStep functions
-    'botSymbol': 'o',
+    'playerName': '',
+    'playerSymbol': '★✘',
+    'fieldSize': 3,   // max field size === 4; for increase this value -> necesarry correct checkResult & botStep functions
+    'botSymbol': '\u004F',//
     'playerStep': true,
   })
   const onSettingsChange = newSettings => setSettings(newSettings)
@@ -19,7 +20,7 @@ function App() {
     <div className="app-wrapper">
       <SettingsProvider value={settings}>
         <Wrapper settings={settings} reloadApp={reloadApp}/>
-        <Settings onSettingsChange={onSettingsChange}/>
+        <Settings onSettingsChange={onSettingsChange} settings={settings}/>
       </SettingsProvider>
       {/* {console.log('render App')} */}
     </div>

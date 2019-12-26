@@ -1,6 +1,7 @@
 .field {
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
 }
 
@@ -21,17 +22,31 @@
 }
 
 .field_footer {
-    height: 70px;
+    height: 100px;
+    max-width: 300px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 130%;
 }
 
+.field_footer p {
+    text-align: center;
+}
+
 .reload {
+    width: 70%;
     height: 50px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    outline: none;
     font-size: 135%;
     text-align: center;
     cursor: pointer;
-    margin-top: 50px;
+    margin-top: 40px;
+  }
+
+  .reload:active {
+    border-width: 2px;
   }

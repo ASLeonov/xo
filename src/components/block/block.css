@@ -21,10 +21,10 @@
 
 .block_endGame {
     color: rgba(255, 255, 255, 0.767);
-    animation: fadeIn 0.1s forwards;
+    animation: fadeIn_endGame 0.1s forwards;
 }
 
-@keyframes fadeIn {
+@keyframes fadeIn_endGame {
     0% {font-size: 200%}
     100% {font-size: 280%}
 }

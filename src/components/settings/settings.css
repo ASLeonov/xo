@@ -27,12 +27,24 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: 12px 0 18px 0;
+    margin: 12px 0;
+    border-bottom: 1.5px solid white;
 }
 
 .settings_title {
     width: 98%;
     text-align: center;
     font-size: 150%;
+    margin: 0;
+}
+
+#playerName {
+    box-sizing: border-box;
+    width: 94%;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: 130%;
 }
 
 .settings_symbols {

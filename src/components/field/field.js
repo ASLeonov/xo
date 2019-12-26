@@ -7,7 +7,7 @@ import {BotStep} from '../../selectors/botStep'
 
 function Field(props) {
     const {fieldSize, fieldStyleCSS, resultObj, freeBlocks, blocks, reloadApp} = props
-    const {playerSymbol, botSymbol} = props.settings
+    const {playerName, playerSymbol, botSymbol} = props.settings
 
     const [playerStep, setPlayerStep] = useState(props.settings.playerStep)
     const [gameState, setGameState] = useState({'result':false, 'winner':false})
@@ -81,18 +81,22 @@ function Field(props) {
 
     const info_string_1 = 
         !gameState.result 
-            ? ( playerStep ? `It's your step` : 'Bot is active...') 
+            ? (playerStep ? ` ${playerName}, your\u00A0step` : 'Bot is active...').replace(' ,', '') 
                 : null
 
     const info_string_2 = 
         gameState.result ? 
-            (gameState.winner !== 'no_winner' ? `THE ${gameState.winner} WIN !!!` : 'NO WINNER !') 
-                : null
+            (gameState.winner !== 'no_winner') ?
+                (gameState.winner === 'PLAYER') ?
+                    `${playerName} WIN ★★★` : 'THE BOT WIN ✦' :
+            'NO WINNER ❋'
+        : null
 
-    const reloadBtn = 
-        ( playerStep || (!playerStep && gameState.result) ) 
-            ? <div className='reload' onClick={reloadApp}>New game</div> 
-                : <div className='reload'></div>
+    // const reloadBtn = 
+    //     ( playerStep || (!playerStep && gameState.result) ) 
+    //         ? <div className='reload' onClick={reloadApp}>New game</div> 
+    //             : <div className='reload'></div>
+    const disabledBtn = (playerStep || (!playerStep && gameState.result)) ? '' : 'disabled'
 
     const blockedBlockes = 
     ( !playerStep )
@@ -109,7 +113,10 @@ function Field(props) {
                 <p>{info_string_1}</p>
                 <p style={{fontWeight:'bold'}}>{info_string_2}</p>
             </div>
-                {reloadBtn}
+                {/* {reloadBtn} */}
+                <button className='reload' disabled={disabledBtn} onClick={reloadApp}>
+                    New game
+                </button>
                 {/* {console.log('render field')} */}
         </div>
     )

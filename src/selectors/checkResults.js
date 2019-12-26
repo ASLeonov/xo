@@ -28,7 +28,7 @@ function CheckResults(props) {
                             res[`${line_index}-${line[i+2]}`] = ''
                             if (line[i+3]-line[i] === 3) {
                                 res[`${line_index}-${line[i+3]}`] = ''
-                                    if (line[i+4]-line[i] === 4) res[`${line_index}-${line[i+4]}`] = ''
+                                    //if (line[i+4]-line[i] === 4) res[`${line_index}-${line[i+4]}`] = ''           // for fieldSize === 5
                             }
                             return res
                         } 
@@ -46,7 +46,7 @@ function CheckResults(props) {
                             res[`${column[i+2]}-${column_index}`] = ''
                             if (column[i+3]-column[i] === 3) {
                                 res[`${column[i+3]}-${column_index}`] = ''
-                                    if (column[i+4]-column[i] === 4) res[`${column[i+4]}-${column_index}`] = ''
+                                    //if (column[i+4]-column[i] === 4) res[`${column[i+4]}-${column_index}`] = ''   // for fieldSize === 5
                             }
                             return res
                         }
@@ -61,7 +61,7 @@ function CheckResults(props) {
                 res[`${line_index+2}-${column_index+2}`] = ''
                 if (stepSymbols[`${line_index+3}-${column_index+3}`]) {
                     res[`${line_index+3}-${column_index+3}`] = ''
-                    if (stepSymbols[`${line_index+4}-${column_index+4}`]) res[`${line_index+4}-${column_index+4}`] = ''
+                    //if (stepSymbols[`${line_index+4}-${column_index+4}`]) res[`${line_index+4}-${column_index+4}`] = ''   // for fieldSize === 5
                 }
                 return res
             }
@@ -72,7 +72,7 @@ function CheckResults(props) {
                 res[`${line_index+2}-${column_index-2}`] = ''
                 if (stepSymbols[`${line_index+3}-${column_index-3}`]) {
                     res[`${line_index+3}-${column_index-3}`] = ''
-                    if (stepSymbols[`${line_index+4}-${column_index-4}`]) res[`${line_index+4}-${column_index-4}`] = ''
+                    //if (stepSymbols[`${line_index+4}-${column_index-4}`]) res[`${line_index+4}-${column_index-4}`] = ''   // for fieldSize === 5
                 }                
                 return res
             }
