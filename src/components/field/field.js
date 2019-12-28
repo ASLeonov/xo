@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import './index.css'
+import './field.css'
 import Block from '../block'
 import GetContext from '../../decorators/getContext'
 import CheckResults from '../../selectors/checkResults'
 import {BotStep} from '../../selectors/botStep'
 
 function Field(props) {
-    const {fieldSize, fieldStyleCSS, resultObj, freeBlocks, blocks, reloadApp} = props
+    const {fieldSize, resultObj, freeBlocks, blocks, reloadApp} = props
     const {playerName, playerSymbol, botSymbol} = props.settings
 
     const [playerStep, setPlayerStep] = useState(props.settings.playerStep)
@@ -20,7 +20,7 @@ function Field(props) {
                     blockKey ={resultObj[key]}
                     blockId = {key}
                     onChangeStep = {onChangeStep}
-                    style = {'block block_endGame'}
+                    style = {'block_endGame'}
                 />
         }
     }
@@ -32,7 +32,7 @@ function Field(props) {
                 blockKey = {resultObj[key]}
                 blockId = {key}
                 onChangeStep = {onChangeStep}
-                style = {'block'}
+                style = {''}
             />
     }
 
@@ -92,20 +92,16 @@ function Field(props) {
             'NO WINNER ❋'
         : null
 
-    // const reloadBtn = 
-    //     ( playerStep || (!playerStep && gameState.result) ) 
-    //         ? <div className='reload' onClick={reloadApp}>New game</div> 
-    //             : <div className='reload'></div>
     const disabledBtn = (playerStep || (!playerStep && gameState.result)) ? '' : 'disabled'
 
     const blockedBlockes = 
     ( !playerStep )
-        ? <div className='field_body field_body__blocked' style={fieldStyleCSS}></div>
+        ? <div className='field_body field_body__blocked'></div>
             : null
 
     return (
         <div className='field' >
-            <div className='field_body' style={fieldStyleCSS}>
+            <div className={`field_body field_body-${fieldSize}`}>
                 {Object.values({...blocks})}
             </div>
                 {blockedBlockes}
@@ -113,7 +109,6 @@ function Field(props) {
                 <p>{info_string_1}</p>
                 <p style={{fontWeight:'bold'}}>{info_string_2}</p>
             </div>
-                {/* {reloadBtn} */}
                 <button className='reload' disabled={disabledBtn} onClick={reloadApp}>
                     New game
                 </button>

@@ -7,9 +7,9 @@ import Settings from '../settings'
 function App() {
   const [settings, setSettings] = useState({
     'playerName': '',
-    'playerSymbol': '★✘',
+    'playerSymbol': 'x',
     'fieldSize': 3,   // max field size === 4; for increase this value -> necesarry correct checkResult & botStep functions
-    'botSymbol': '\u004F',//
+    'botSymbol': 'o',//
     'playerStep': true,
   })
   const onSettingsChange = newSettings => setSettings(newSettings)

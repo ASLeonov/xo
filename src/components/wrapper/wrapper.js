@@ -9,11 +9,6 @@ function Wrapper(props) {
     const freeBlocks = {}
     const blocks = {}
 
-    const fieldStyleCSS = {
-        'width': fieldSize*100,
-        'height': fieldSize*100,
-    }
-
     for (let x = 0; x < fieldSize; x++) {
         for (let y = 0; y < fieldSize; y++) {
             const key = `${x+1}-${y+1}`
@@ -32,7 +27,6 @@ function Wrapper(props) {
         <div>
             <Field
                 fieldSize={fieldSize}
-                fieldStyleCSS={fieldStyleCSS}
                 resultObj={resultObj}
                 freeBlocks={freeBlocks}
                 blocks={blocks}

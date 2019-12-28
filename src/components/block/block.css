@@ -2,29 +2,76 @@
     box-sizing: border-box;
     width: 90px;
     height: 90px;
-    background-color: green;
-    margin: 0 4px;
+    background-color: #fffceb;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid blue;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 4px;
     user-select: none;
-    font-size: 200%;
     line-height: normal;
 }
 
-.player_style {
-    color: blue;
+.x {
+    width: 40px;
+    height: 40px;
+    background: no-repeat center/contain url(../../img/x.png);
+}
+
+.o {
+    width: 40px;
+    height: 40px;
+    background: no-repeat center/contain url(../../img/o.png);
 }
 
 .block_endGame {
-    color: rgba(255, 255, 255, 0.767);
     animation: fadeIn_endGame 0.1s forwards;
 }
 
 @keyframes fadeIn_endGame {
-    0% {font-size: 200%}
-    100% {font-size: 280%}
+    0% {width: 40px; height: 40px}
+    100% {width: 58px; height: 58px}
 }
+
+@media (max-width: 500px) {
+
+    .x {
+        width: 35px;
+        height: 35px;
+        background: no-repeat center/contain url(../../img/x.png);
+    }
+    
+    .o {
+        width: 35px;
+        height: 35px;
+        background: no-repeat center/contain url(../../img/o.png);
+    }
+
+    .block_endGame {
+        animation: fadeIn_endGame500 0.1s forwards;
+    }
+
+    @keyframes fadeIn_endGame500 {
+        0% {width: 35px; height: 35px}
+        100% {width: 51px; height: 51px}
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .block {
+        width: 85px;
+        height: 85px;
+    }
+}
+
+@media (max-width: 370px) {
+
+    .block {
+        width: 70px;
+        height: 70px;
+    }
+ 
+  }

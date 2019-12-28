@@ -32,8 +32,8 @@ class Settings extends Component {
     }
 
     change_playerSymbol = () => {
-        const newPlayerSymbol = this.state.playerSymbol === '✘' ? 'o' : '✘'
-        const newBotSymbol = newPlayerSymbol === '✘' ? 'o' : '✘'
+        const newPlayerSymbol = this.state.playerSymbol === 'x' ? 'o' : 'x'
+        const newBotSymbol = newPlayerSymbol === 'x' ? 'o' : 'x'
         this.setState({
             playerSymbol: newPlayerSymbol,
             botSymbol: newBotSymbol
@@ -62,7 +62,7 @@ class Settings extends Component {
     }
 
     render () {
-        const other_playerSymbol   = this.state.playerSymbol === '✘' ? 'o' : '✘'
+        const other_playerSymbol   = this.state.playerSymbol === 'x' ? 'o' : 'x'
         const other_fieldSize      = this.state.fieldSize === 3 ? 4 : 3
         const classSettingsWrapper = this.state.settingsVisible ? 'settingsWrapper settingsWrapper_show' : 'settingsWrapper settingsWrapper_hide'
         const classSettings        = this.state.settingsVisible ? 'settings_show' : 'settings_hide'

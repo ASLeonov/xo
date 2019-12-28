@@ -1,0 +1,122 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-width: 320px;
+}
+
+.field_body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #6f6f6f;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+.field_body-3 {
+    width: 355px !important;
+    height: 355px !important;
+    transition: all 0.05s;
+}
+
+.field_body-4 {
+    width: 445px !important;
+    height: 445px !important;
+    transition: all 0.05s;
+}
+
+.field_body__blocked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+.field_footer {
+    height: 100px;
+    max-width: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+}
+
+.field_footer p {
+    text-align: center;
+}
+
+.reload {
+    width: 70%;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    outline: none;
+    font-size: 135%;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 40px;
+  }
+
+  .reload:active {
+    border-width: 2px;
+  }
+
+  @media (max-width: 500px) {
+
+    .field_body-3 {
+        width: 350px !important;
+        height: 350px !important;
+    }
+
+    .field_body-4 {
+        width: 395px !important;
+        height: 395px !important;
+    }
+
+  }
+
+  @media (max-width: 400px) {
+
+    .field_body-3 {
+        width: 330px !important;
+        height: 330px !important;
+    }
+
+    .field_body-4 {
+        width: 370px !important;
+        height: 370px !important;
+    }
+
+  }
+
+  @media (max-width: 370px) {
+
+    .field_body-3 {
+        width: 270px !important;
+        height: 270px !important;
+    }
+
+    .field_body-4 {
+        width: 314px !important;
+        height: 314px !important;
+    }
+
+    .field_footer {
+        font-size: 125%;
+        height: 90px;
+        max-width: 250px;
+    }
+
+    .reload {
+        height: 45px;
+        font-size: 130%;
+        margin-top: 20px;
+      }
+  
+  }
