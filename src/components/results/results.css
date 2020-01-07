@@ -1,0 +1,120 @@
+.resultsWrapper {
+    position: absolute;
+    top: 10px;
+    box-sizing: border-box;
+    width: 220px;
+    height: calc(100vh - 20px);
+    border-right: 2px solid white;
+    padding: 10px 16px 10px 10px;
+    transition: left 0.9s;
+}
+
+.resultsWrapper_hide {
+    left: -136px;
+}
+
+.resultsWrapper_show {
+    left: 0;
+}
+
+.results_hide {
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.results_show {
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.results_item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0 18px 0;
+    margin: 12px 0;
+    border-bottom: 1.5px solid white;
+}
+
+.results_title {
+    width: 98%;
+    text-align: center;
+    font-size: 150%;
+    margin: 0;
+}
+
+.result_score {
+    float: right;
+    font-size: 112%;
+    margin: 8px 0;
+}
+
+.result_name {
+    font-size: 112%;
+    margin: 8px 0;
+}
+
+.results_scores {
+    display: flex;
+    justify-content: space-around;
+    font-size: 130%;
+}
+
+.results_btn {
+    text-align: right;
+}
+
+.results_btn button {
+    font-size: 220%;
+}
+
+.send_btn {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.send_btn button {
+    font-size: 130%;
+    padding: 8px;
+}
+
+@media (max-width: 900px) {
+    .settingsWrapper {
+        background-color: burlywood;
+    }
+    
+}
+
+@media (max-width: 500px) {
+
+    .settingsWrapper {
+        background-color: burlywood;
+        border-left: none;
+        width: 240px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    .settingsWrapper_hide {
+        right: -241px;
+    }
+
+    .btn {
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        transition: all 0.5s;
+    }
+
+    .settingsWrapper_show .btn {
+        transform: rotate(45deg)
+    }
+
+}
+
+@media (max-width:370px) {
+
+    .btn button {
+        font-size: 200%;
+    }
+
+}

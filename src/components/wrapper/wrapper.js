@@ -1,9 +1,8 @@
 import React from 'react'
 import Field from '../field'
 
-function Wrapper(props) {
+function Wrapper(props) {  
     const {fieldSize} = props.settings
-    const reloadApp = props.reloadApp
 
     const resultObj = {}
     const freeBlocks = {}
@@ -30,7 +29,7 @@ function Wrapper(props) {
                 resultObj={resultObj}
                 freeBlocks={freeBlocks}
                 blocks={blocks}
-                reloadApp={reloadApp}
+                reloadApp={props.reloadApp}
             />
             {/* {console.log('render wrapper')} */}
         </div>

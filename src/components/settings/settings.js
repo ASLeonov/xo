@@ -69,7 +69,7 @@ class Settings extends Component {
             return (
                 <div className={classSettingsWrapper}>
                     <div className='btn'>
-                        <button onClick={this.showSettings}>櫳</button>
+                        <button onClick={this.showSettings} title={this.state.settingsVisible ? 'Hide settings' : 'Show settings'}>櫳</button>
                     </div>
                     <div className={classSettings}>
                         <div className='settings_item'>

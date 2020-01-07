@@ -4,13 +4,15 @@ import Block from '../block'
 import GetContext from '../../decorators/getContext'
 import CheckResults from '../../selectors/checkResults'
 import {BotStep} from '../../selectors/botStep'
+import {connect} from 'react-redux'
+import {addPlayerScore, addBotScore} from '../../store/action-creators'
 
 function Field(props) {
-    const {fieldSize, resultObj, freeBlocks, blocks, reloadApp} = props
+    const {fieldSize, resultObj, freeBlocks, blocks, reloadApp, addPlayerScore, addBotScore} = props
     const {playerName, playerSymbol, botSymbol} = props.settings
 
     const [playerStep, setPlayerStep] = useState(props.settings.playerStep)
-    const [gameState, setGameState] = useState({'result':false, 'winner':false})
+    const [gameState, setGameState] = useState({result: false, winner: false})
 
     const matchBlockEndGame = checkResult => {
         for (const key in checkResult) {
@@ -39,8 +41,9 @@ function Field(props) {
     const onChangeStep = blockId => {
         const checkResult = CheckResults({playerStep, playerSymbol, botSymbol, resultObj})
         if (checkResult) {
-            if (checkResult === 'no_winner') return setGameState({'result':true, 'winner':'no_winner'})
+            if (checkResult === 'no_winner') return setGameState({result:true, winner:'no_winner'})
             matchBlockEndGame(checkResult)
+            addPlayerScore()
             setGameState({'result':true, 'winner':'PLAYER'})
             setPlayerStep(false)
         } else {
@@ -59,7 +62,7 @@ function Field(props) {
     }
 
     useEffect(() => {   // set initial state for playerStep after 1-st render; set all initial states of component when reload App
-        setGameState({'result':false, 'winner':false})
+        setGameState({result:false, winner:false})
         setPlayerStep(props.settings.playerStep)
     }, [props.settings])
 
@@ -69,9 +72,10 @@ function Field(props) {
                 BotStep({fieldSize, freeBlocks, resultObj, playerSymbol, botSymbol, createBlock})
                 const checkResult = CheckResults({playerStep, playerSymbol, botSymbol, resultObj})
                 if (checkResult) {
-                    if (checkResult === 'no_winner') return setGameState({'result':true, 'winner':'no_winner'})
+                    if (checkResult === 'no_winner') return setGameState({result:true, winner:'no_winner'})
                     matchBlockEndGame(checkResult)
-                    setGameState({'result':true, 'winner':'BOT'})
+                    addBotScore()
+                    setGameState({result:true, winner:'BOT'})
                 } else {
                     setPlayerStep(true)
                 }
@@ -96,7 +100,7 @@ function Field(props) {
 
     const blockedBlockes = 
     ( !playerStep )
-        ? <div className='field_body field_body__blocked'></div>
+        ? <div className={`field_body-${fieldSize} field_body__blocked`}></div>
             : null
 
     return (
@@ -117,4 +121,13 @@ function Field(props) {
     )
 }
 
-export default GetContext(Field)
+const mapDispatchToProps = {
+    addPlayerScore,
+    addBotScore,
+  }
+
+export default connect(
+    null,
+    mapDispatchToProps
+)
+(GetContext(Field))
