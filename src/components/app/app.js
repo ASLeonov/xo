@@ -4,7 +4,7 @@ import {Provider as SettingsProvider} from '../../contexts/settings'
 import Wrapper from '../wrapper'
 import Settings from '../settings'
 import Results from '../results'
-import CurrentResults from '../currentResults' 
+import CurrentResults from '../currentResults'
 import {store} from '../../store'
 import {Provider} from 'react-redux'
 
@@ -28,10 +28,10 @@ function App() {
           <CurrentResults settings={settings} />
           <Wrapper settings={settings} reloadApp={reloadApp} />
           <Settings onSettingsChange={onSettingsChange} settings={settings} />
-          <Results settings={settings} />
+          <Results settings={settings} reloadApp={reloadApp} />
         </SettingsProvider>
       </Provider>
-      {/* {console.log('render App')} */}
+      {console.log('render App')}
     </div>
   )
 }

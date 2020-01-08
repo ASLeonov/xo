@@ -13,6 +13,12 @@ export const scoresReducer = (scoresState = {playerScore:0, botScore:0}, action)
             botScore: scoresState.botScore + 1,
         }
     }
+    case 'CLEAR_SCORES': {
+        return {
+            playerScore: 0,
+            botScore: 0,
+        }
+    }
     default: {
         return scoresState
     }

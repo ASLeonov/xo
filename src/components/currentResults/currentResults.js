@@ -1,4 +1,5 @@
 import React from 'react'
+import './currentResults.css'
 import {connect} from 'react-redux'
 
 function CurrentResults(props) {
@@ -6,13 +7,15 @@ function CurrentResults(props) {
 
     return (
         <div className='currentResults'>
-            <h3>Current results:</h3>
-                <h3>
-                    {props.settings.playerName ? props.settings.playerName : 'Player'}: {playerScore}
-                </h3>
-                <h3>
-                    BOT: {botScore}
-                </h3>
+            <h2>Current results:</h2>
+                <div className='currentResults_scores'>
+                    <h3>
+                        {props.settings.playerName ? props.settings.playerName : 'Player'}: {playerScore}
+                    </h3>
+                    <h3>
+                        BOT: {botScore}
+                    </h3>
+                </div>
         </div>
     )
 }

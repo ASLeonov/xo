@@ -68,22 +68,22 @@ class Settings extends Component {
         const classSettings        = this.state.settingsVisible ? 'settings_show' : 'settings_hide'
             return (
                 <div className={classSettingsWrapper}>
-                    <div className='btn'>
+                    <div className='settings_btn'>
                         <button onClick={this.showSettings} title={this.state.settingsVisible ? 'Hide settings' : 'Show settings'}>櫳</button>
                     </div>
                     <div className={classSettings}>
                         <div className='settings_item'>
-                            <p className='settings_title'>Ваше имя</p>
+                            <p className='settings_title'>Yor name:</p>
                             <input id='playerName' placeholder='Enter your name' maxLength='12' type='text' onChange={this.set_playerName}>
                             </input>
                         </div>
                         <div className='settings_item'>
-                            <p className='settings_title'>Вы играете:</p>
+                            <p className='settings_title'>Your game chip:</p>
                             <p className='settings_symbols_active'>{this.state.playerSymbol}</p>
                             <p className='settings_symbols'onClick={this.change_playerSymbol}>{other_playerSymbol}</p>
                         </div>
                         <div className='settings_item'>
-                            <p className='settings_title'>Размер поля:</p>
+                            <p className='settings_title'>Field size:</p>
                             <p className='settings_symbols_active'>{this.state.fieldSize}</p>
                             <p className='settings_symbols'onClick={this.change_fieldSize}>{other_fieldSize}</p>
                         </div>

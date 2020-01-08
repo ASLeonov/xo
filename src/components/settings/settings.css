@@ -40,7 +40,7 @@
     width: 98%;
     text-align: center;
     font-size: 150%;
-    margin: 0;
+    margin: 0 0 5px 0;
 }
 
 #playerName {
@@ -70,8 +70,9 @@
     font-weight: bold;
 }
 
-.btn button {
+.settings_btn button {
     font-size: 220%;
+    cursor: pointer;
 }
 
 @media (max-width: 900px) {

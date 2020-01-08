@@ -68,6 +68,10 @@
     border-width: 2px;
   }
 
+  .reload:disabled {
+    cursor: initial;
+  }
+
   @media (max-width: 500px) {
 
     .field_body-3 {
