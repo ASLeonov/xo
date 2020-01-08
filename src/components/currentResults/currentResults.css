@@ -1,0 +1,19 @@
+.currentResults {
+    box-sizing: border-box;
+    width: 320px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.currentResults h2 {
+    font-size: 130%;
+}
+
+.currentResults h3, h2 {
+    margin-top: 12px;
+}
+
+.currentResults_scores {
+    display: flex;
+    justify-content: space-around;
+}

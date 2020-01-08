@@ -1,0 +1,118 @@
+.settingsWrapper {
+    position: absolute;
+    top: 10px;
+    box-sizing: border-box;
+    width: 220px;
+    height: calc(100vh - 20px);
+    border-left: 2px solid white;
+    padding: 10px 10px 10px 16px;
+    transition: right 0.9s;
+}
+
+.settingsWrapper_hide {
+    right: -136px;
+}
+
+.settingsWrapper_show {
+    right: 0;
+}
+
+.settings_hide {
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.settings_show {
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.settings_item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 12px 0 18px 0;
+    margin: 12px 0;
+    border-bottom: 1.5px solid white;
+}
+
+.settings_title {
+    width: 98%;
+    text-align: center;
+    font-size: 150%;
+    margin: 0 0 5px 0;
+}
+
+#playerName {
+    box-sizing: border-box;
+    width: 94%;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: 130%;
+}
+
+.settings_symbols {
+    display: inline-block;
+    text-align: center;
+    font-size: 200%;
+    user-select: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+.settings_symbols_active {
+    display: inline-block;
+    text-align: center;
+    font-size: 200%;
+    user-select: none;
+    cursor: pointer;
+    margin: 0;
+    font-weight: bold;
+}
+
+.settings_btn button {
+    font-size: 220%;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .settingsWrapper {
+        background-color: burlywood;
+    }
+    
+}
+
+@media (max-width: 500px) {
+
+    .settingsWrapper {
+        background-color: burlywood;
+        border-left: none;
+        width: 240px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    .settingsWrapper_hide {
+        right: -241px;
+    }
+
+    .btn {
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        transition: all 0.5s;
+    }
+
+    .settingsWrapper_show .btn {
+        transform: rotate(45deg)
+    }
+
+}
+
+@media (max-width:370px) {
+
+    .btn button {
+        font-size: 200%;
+    }
+
+}
