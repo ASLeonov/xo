@@ -43,13 +43,14 @@
 }
 
 .results_scores_show {
-    opacity: 1;
-    transition: opacity 0.2s;
+    opacity: 0;
+    height: auto;
+    animation: fadeIn_results_scores 0.7s forwards;
 }
 
-.results_scores_hide {
-    opacity: 0;
-    transition: opacity 0.2s;
+@keyframes fadeIn_results_scores {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 .results_scores_wrapper {
@@ -87,6 +88,10 @@
     padding-top: 20px;
 }
 
+.send_btn_hide {
+    display: none;
+}
+
 .send_btn button {
     font-size: 130%;
     box-sizing: border-box;
@@ -104,7 +109,6 @@
 }
 
 .send_btn button:disabled {
-    /* cursor: none; */
     cursor: initial;
 }
 

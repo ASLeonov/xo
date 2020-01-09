@@ -1,4 +1,6 @@
-@import 'normalize.css'
+/* @import 'normalize.css'; */
+@import '~antd/dist/antd.css';
+@import 'normalize.css';
 
 body {
   margin: 0;

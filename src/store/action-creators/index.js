@@ -15,3 +15,10 @@ export const clearScores = () => {
         type: 'CLEAR_SCORES',
     }
 }
+
+export const getResults = () => {
+    return {
+        type: 'GET_RESULTS',
+        callGetApi: 'https://cors-anywhere.herokuapp.com/' + 'http://xo.leonovlab.ru/api/results.php',  // proxy fix problem with CORS
+    }
+}
