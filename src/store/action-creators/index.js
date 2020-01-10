@@ -19,6 +19,6 @@ export const clearScores = () => {
 export const getResults = () => {
     return {
         type: 'GET_RESULTS',
-        callGetApi: 'https://cors-anywhere.herokuapp.com/' + 'http://xo.leonovlab.ru/api/results.php',  // proxy fix problem with CORS
+        callGetApi: 'https://cors-anywhere.herokuapp.com/http://xo.leonovlab.ru/api/results.php',  // proxy fix problem with CORS
     }
 }

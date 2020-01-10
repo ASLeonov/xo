@@ -3,7 +3,7 @@ import './block.css'
 import GetContext from '../../decorators/getContext'
 
 function Block(props) {
-    const {blockKey, blockId, onChangeStep, style} = props
+    const {blockKey, blockId, onChangeStep, styleCSS} = props
     const {playerSymbol, botSymbol} = props.settings
     const [thisBlockValue, setThisBlockValue] = useState('')
 
@@ -24,7 +24,7 @@ function Block(props) {
                 }
             }
         >
-            <div className={thisBlockValue + ' ' + style}></div>
+            <div className={thisBlockValue + ' ' + styleCSS}></div>
             {/* {console.log('render block', blockId)} */}
         </div>
     )

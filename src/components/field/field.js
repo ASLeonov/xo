@@ -22,7 +22,7 @@ function Field(props) {
                     blockKey ={resultObj[key]}
                     blockId = {key}
                     onChangeStep = {onChangeStep}
-                    style = {'block_endGame'}
+                    styleCSS = {'block_endGame'}
                 />
         }
     }
@@ -34,7 +34,7 @@ function Field(props) {
                 blockKey = {resultObj[key]}
                 blockId = {key}
                 onChangeStep = {onChangeStep}
-                style = {''}
+                styleCSS = {''}
             />
     }
 
@@ -99,7 +99,7 @@ function Field(props) {
     const disabledBtn = (playerStep || (!playerStep && gameState.result)) ? '' : 'disabled'
 
     const blockedBlockes = 
-    ( !playerStep )
+    (!playerStep)
         ? <div className={`field_body-${fieldSize} field_body__blocked`}></div>
             : null
 

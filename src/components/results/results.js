@@ -6,7 +6,9 @@ import {clearScores, getResults} from '../../store/action-creators'
 function Results(props) {
     const [resultsVisible, setResultsVisible] = useState(true)
     const playerName = props.settings.playerName
-    const {playerScore, botScore, results, reloadApp, clearScores, getResults} = props
+    const {playerScore, botScore, results, minScore, reloadApp, clearScores, getResults} = props
+
+    const playerResult = playerScore-botScore
 
     const showResults = () => {
         setResultsVisible(!resultsVisible)
@@ -16,10 +18,10 @@ function Results(props) {
         clearScores()
         reloadApp()
 
-        fetch('https://cors-anywhere.herokuapp.com/' + 'http://xo.leonovlab.ru/api/results.php', {      // proxy fix problem with CORS
+        fetch('https://cors-anywhere.herokuapp.com/http://xo.leonovlab.ru/api/results.php', {      // proxy fix problem with CORS
             method: 'POST',
             headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
-            body: `playerName=${playerName}&playerScore=${playerScore-botScore}`
+            body: `playerName=${playerName}&playerScore=${playerResult}`
         })
         .then(getResults())
         .catch(e => getResults())
@@ -51,7 +53,12 @@ function Results(props) {
                         <div className={classSendBtn}>
                             <button
                                 onClick={sendResult}
-                                disabled={(playerName && playerScore - botScore > 0) ? '' : 'disabled'}
+                                disabled={
+                                    (playerName && 
+                                        playerResult > 0
+                                            && (results['data'].length < 10 || (results['data'].length >= 10 && playerResult > minScore))) ? 
+                                                '' : 'disabled'
+                                }
                             >
                                 {`Clear scores\n&\nsave my result`}
                             </button>
@@ -69,6 +76,7 @@ const mapStateToProps = state => {
         playerScore: state.scores.playerScore,
         botScore: state.scores.botScore,
         results: state.results,
+        minScore: state.minScore,
     }
 }
 

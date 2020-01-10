@@ -26,7 +26,8 @@ export default store => next => action => {
                         <p className='result_name'>{result.player_name}</p>
                         <p className='result_score'>{result.player_result}</p>
                     </div>
-                )
+                ),
+                minScore: res[res.length-1].player_result,
             })
         )
         .catch(e => {

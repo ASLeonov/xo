@@ -19,7 +19,7 @@ function App() {
 
   const onSettingsChange = newSettings => setSettings(newSettings)
 
-  const reloadApp = () => setSettings( { ...settings} )
+  const reloadApp = () => setSettings( {...settings} )
 
   return (
     <div className="app-wrapper">

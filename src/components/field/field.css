@@ -60,6 +60,7 @@
     outline: none;
     font-size: 135%;
     text-align: center;
+    color: black;
     cursor: pointer;
     margin-top: 40px;
   }
@@ -70,6 +71,7 @@
 
   .reload:disabled {
     cursor: initial;
+    color: grey;
   }
 
   @media (max-width: 500px) {

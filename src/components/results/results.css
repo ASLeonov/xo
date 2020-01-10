@@ -97,6 +97,7 @@
     box-sizing: border-box;
     min-height: 105px;
     padding: 12px;
+    color: black;
     border: 1px solid grey;
     border-radius: 4px;
     outline: none;
@@ -110,6 +111,7 @@
 
 .send_btn button:disabled {
     cursor: initial;
+    color: grey;
 }
 
 @media (max-width: 900px) {
