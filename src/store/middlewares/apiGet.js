@@ -35,7 +35,7 @@ export default store => next => action => {
                 ...rest,
                 type: action.type + '_FAIL',
                 error: e,
-                fail: <div style={{textAlign:'center'}}>no results ...</div>
+            fail: <div style={{textAlign:'center'}}> no results ...</div>
             })
         })
     ,2900)

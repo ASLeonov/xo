@@ -75,6 +75,15 @@
   }
 
   @media (max-width: 500px) {
+      .field {
+          justify-content: space-between;
+      }
+    .field_footer {
+        height: 90px;
+    }
+  }
+
+  @media (max-width: 500px) {
 
     .field_body-3 {
         width: 350px !important;
@@ -84,6 +93,12 @@
     .field_body-4 {
         width: 395px !important;
         height: 395px !important;
+    }
+    .field_footer p {
+        margin-bottom: 6px;
+    }
+    .reload {
+        margin-top: 0px;
     }
 
   }
@@ -98,6 +113,9 @@
     .field_body-4 {
         width: 370px !important;
         height: 370px !important;
+    }
+    .reload {
+        height: 40px;
     }
 
   }
@@ -116,14 +134,18 @@
 
     .field_footer {
         font-size: 125%;
-        height: 90px;
+        height: 65px;
         max-width: 250px;
     }
 
+    .field_footer p {
+        font-size: 90%;
+    }
+
     .reload {
-        height: 45px;
+        height: 43px;
         font-size: 130%;
-        margin-top: 20px;
+        margin-top: 5px;
       }
   
   }

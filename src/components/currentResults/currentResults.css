@@ -17,3 +17,15 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media (max-width: 400px) {
+    .currentResults {
+      padding-bottom: 10px;
+    } 
+}
+
+@media (max-width: 370px) {
+    .currentResults_scores h3 {
+        margin-top: 2px;
+    } 
+}

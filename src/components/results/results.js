@@ -18,13 +18,17 @@ function Results(props) {
         clearScores()
         reloadApp()
 
-        fetch('https://cors-anywhere.herokuapp.com/http://xo.leonovlab.ru/api/results.php', {      // proxy fix problem with CORS
+        fetch('http://xo.leonovlab.ru/api/results.php', {      // proxy fix problem with CORS https://cors-anywhere.herokuapp.com/
             method: 'POST',
             headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
             body: `playerName=${playerName}&playerScore=${playerResult}`
         })
-        .then(getResults())
-        .catch(e => getResults())
+        .then(response => response.text())
+        .then(data => {
+            console.log('data =>', data)
+            if (data === 'ADD_SCORE') getResults()
+        })
+        .catch(e => console.log('catch error =>',e))
     }
 
     useEffect(() => {

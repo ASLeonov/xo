@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-// import {Drawer, Button} from 'antd'
 import './settings.css'
 
 class Settings extends Component {
     state = {
-        settingsVisible: false,         // Подумать про fadeIn - fadeOut...
+        settingsVisible: false,
         playerName: this.props.settings.playerName,
         playerSymbol: this.props.settings.playerSymbol,
         botSymbol: this.props.settings.botSymbol,
         fieldSize: this.props.settings.fieldSize,
+        canSubmitName: false,
     }
 
     showSettings = () => {
@@ -16,19 +16,20 @@ class Settings extends Component {
             settingsVisible: !this.state.settingsVisible,
         })
     }
-
+    
     set_playerName = () => {
-        const new_playerName = document.getElementById('playerName').value
-        this.setState({
-            playerName: new_playerName,
-        })
-        this.props.onSettingsChange({
-            'playerName': new_playerName,
-            'playerSymbol': this.state.playerSymbol,
-            'fieldSize': this.state.fieldSize,
-            'botSymbol': this.state.botSymbol,
-            'playerStep': 'true',
-        })
+        const new_playerName = this.inputName.value
+        if (!new_playerName) return
+            this.setState({
+                playerName: new_playerName,
+            })
+            this.props.onSettingsChange({
+                'playerName': new_playerName,
+                'playerSymbol': this.state.playerSymbol,
+                'fieldSize': this.state.fieldSize,
+                'botSymbol': this.state.botSymbol,
+                'playerStep': 'true',
+            })
     }
 
     change_playerSymbol = () => {
@@ -74,8 +75,23 @@ class Settings extends Component {
                     <div className={classSettings}>
                         <div className='settings_item'>
                             <p className='settings_title'>Yor name:</p>
-                            <input id='playerName' placeholder='Enter your name' maxLength='12' type='text' onChange={this.set_playerName}>
+                            <input
+                                id='playerName'
+                                ref={ref => this.inputName = ref}
+                                onBlur= {() => {
+                                            if (this.inputName.value) {
+                                                this.setState({canSubmitName: true})
+                                            } else {
+                                                this.setState({canSubmitName: false})
+                                            }
+                                        }
+                                }
+                                placeholder='Enter your name'
+                                maxLength='12'
+                                type='text'
+                            >
                             </input>
+                            <button onClick={this.set_playerName} disabled={this.state.canSubmitName ? '' : 'disabled'}>Set name</button>
                         </div>
                         <div className='settings_item'>
                             <p className='settings_title'>Your game chip:</p>
@@ -88,7 +104,7 @@ class Settings extends Component {
                             <p className='settings_symbols'onClick={this.change_fieldSize}>{other_fieldSize}</p>
                         </div>
                     </div>
-                    {/* {console.log('render settings')} */}
+                    {console.log('render settings')}
                 </div>
             )
     }

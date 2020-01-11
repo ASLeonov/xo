@@ -3,7 +3,7 @@
     top: 10px;
     box-sizing: border-box;
     width: 220px;
-    height: calc(100vh - 20px);
+    min-height: calc(100vh - 20px);
     border-right: 2px solid white;
     padding: 10px 16px 10px 10px;
     transition: left 0.9s;
@@ -115,43 +115,60 @@
 }
 
 @media (max-width: 900px) {
-    .settingsWrapper {
+    .resultsWrapper {
         background-color: burlywood;
     }
-    
 }
 
 @media (max-width: 500px) {
-
-    .settingsWrapper {
-        background-color: burlywood;
-        border-left: none;
-        width: 240px;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
+    .resultsWrapper {
+        min-height: 100%;
+        width: 98%;
+        top: 5px;
+        padding-top: 25px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
     }
-
-    .settingsWrapper_hide {
-        right: -241px;
+    .resultsWrapper_hide {
+        left: -98%;
     }
-
-    .btn {
+    .resultsWrapper_show {
+        left: 0px;
+    }
+    .results_btn {
         position: fixed;
-        left: 20px;
+        left: 6%;
         top: 20px;
         transition: all 0.5s;
     }
-
-    .settingsWrapper_show .btn {
-        transform: rotate(45deg)
+    .resultsWrapper_show .results_btn {
+        transform: rotate(20deg)
     }
-
+    .results {
+        width: 70%;
+        margin-left: 15%;
+    }
 }
 
-@media (max-width:370px) {
-
-    .btn button {
-        font-size: 200%;
+@media (max-height: 670px) {
+    .result_name, .result_score {
+        margin: 6px 0;
     }
+}
 
+@media (max-height: 580px) {
+    .results {
+        border-bottom: none;
+    }
+    .results_caption {
+        margin-bottom: 9px;
+    }
+    .result_name, .result_score {
+        font-size: 110%;
+        margin: 4px 0;
+    }
+    .send_btn button {
+        min-height: 0;
+        white-space: unset;
+    }    
 }
