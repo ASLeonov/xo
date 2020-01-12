@@ -13,6 +13,30 @@
   overflow: hidden;
 }
 
+.btn {
+  box-sizing: border-box;
+  border: 1px solid grey;
+  border-radius: 4px;
+  outline: none;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+}
+
+.btn:active {
+  border-width: 2px;
+}
+
+.btn:disabled {
+  cursor: initial;
+  color: grey;
+}
+
+input:focus {
+  outline: none;
+  outline-offset: 0;
+}
+
 @media (max-width: 500px) {
   .app-wrapper {
     padding-top: 20px;

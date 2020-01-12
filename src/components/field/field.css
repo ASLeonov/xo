@@ -55,23 +55,8 @@
 .reload {
     width: 70%;
     height: 50px;
-    border: 1px solid grey;
-    border-radius: 4px;
-    outline: none;
     font-size: 135%;
-    text-align: center;
-    color: black;
-    cursor: pointer;
     margin-top: 40px;
-  }
-
-  .reload:active {
-    border-width: 2px;
-  }
-
-  .reload:disabled {
-    cursor: initial;
-    color: grey;
   }
 
   @media (max-width: 500px) {

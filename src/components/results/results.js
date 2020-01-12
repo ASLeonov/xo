@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import './results.css'
 import {connect} from 'react-redux'
+import {apiWay} from '../../store/common'
 import {clearScores, getResults} from '../../store/action-creators'
 
 function Results(props) {
-    const [resultsVisible, setResultsVisible] = useState(true)
+    const [resultsVisible, setResultsVisible] = useState(false)
     const playerName = props.settings.playerName
     const {playerScore, botScore, results, minScore, reloadApp, clearScores, getResults} = props
 
@@ -18,14 +19,13 @@ function Results(props) {
         clearScores()
         reloadApp()
 
-        fetch('http://xo.leonovlab.ru/api/results.php', {      // proxy fix problem with CORS https://cors-anywhere.herokuapp.com/
+        fetch(apiWay, {
             method: 'POST',
             headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
             body: `playerName=${playerName}&playerScore=${playerResult}`
         })
         .then(response => response.text())
         .then(data => {
-            console.log('data =>', data)
             if (data === 'ADD_SCORE') getResults()
         })
         .catch(e => console.log('catch error =>',e))
@@ -57,6 +57,7 @@ function Results(props) {
                         <div className={classSendBtn}>
                             <button
                                 onClick={sendResult}
+                                className='btn'
                                 disabled={
                                     (playerName && 
                                         playerResult > 0

@@ -8,7 +8,7 @@ class Settings extends Component {
         playerSymbol: this.props.settings.playerSymbol,
         botSymbol: this.props.settings.botSymbol,
         fieldSize: this.props.settings.fieldSize,
-        canSubmitName: false,
+        innerPlayerName: '',
     }
 
     showSettings = () => {
@@ -18,10 +18,11 @@ class Settings extends Component {
     }
     
     set_playerName = () => {
-        const new_playerName = this.inputName.value
-        if (!new_playerName) return
+        const new_playerName = this.state.innerPlayerName.trim()
+        if (!new_playerName) return this.setState({innerPlayerName: ''})
             this.setState({
                 playerName: new_playerName,
+                innerPlayerName: new_playerName,
             })
             this.props.onSettingsChange({
                 'playerName': new_playerName,
@@ -74,24 +75,20 @@ class Settings extends Component {
                     </div>
                     <div className={classSettings}>
                         <div className='settings_item'>
-                            <p className='settings_title'>Yor name:</p>
-                            <input
-                                id='playerName'
-                                ref={ref => this.inputName = ref}
-                                onBlur= {() => {
-                                            if (this.inputName.value) {
-                                                this.setState({canSubmitName: true})
-                                            } else {
-                                                this.setState({canSubmitName: false})
-                                            }
-                                        }
-                                }
-                                placeholder='Enter your name'
-                                maxLength='12'
-                                type='text'
-                            >
-                            </input>
-                            <button onClick={this.set_playerName} disabled={this.state.canSubmitName ? '' : 'disabled'}>Set name</button>
+                            <p className='settings_title'>Your name:</p>
+                            <form onSubmit={this.set_playerName}>
+                                <input
+                                    id='playerName'
+                                    onChange={event => this.setState({innerPlayerName: event.target.value})}
+                                    placeholder='Enter your name'
+                                    maxLength='12'
+                                    type='text'
+                                    value = {this.state.innerPlayerName}
+                                >
+                                </input>
+                                <input type="submit" value="Submit" />
+                                {/* <button className='btn' onClick={this.set_playerName} disabled={this.state.innerPlayerName ? '' : 'disabled'}>Set name</button> */}
+                            </form>
                         </div>
                         <div className='settings_item'>
                             <p className='settings_title'>Your game chip:</p>
@@ -104,7 +101,7 @@ class Settings extends Component {
                             <p className='settings_symbols'onClick={this.change_fieldSize}>{other_fieldSize}</p>
                         </div>
                     </div>
-                    {console.log('render settings')}
+                    {console.log('render Settings')}
                 </div>
             )
     }

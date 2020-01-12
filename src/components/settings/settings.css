@@ -56,15 +56,6 @@
 .settings_item button {
     width: 110px;
     height: 35px;
-    color: black;
-    border: solid 1px grey;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.settings_item button:disabled {
-    cursor: initial;
-    color: grey;
 }
 
 .settings_symbols {
@@ -88,7 +79,6 @@
 
 .settings_btn button {
     font-size: 220%;
-    cursor: pointer;
 }
 
 @media (max-width: 900px) {

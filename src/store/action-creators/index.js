@@ -1,3 +1,5 @@
+import {apiWay} from '../common'
+
 export const addPlayerScore = () => {
     return {
         type: 'INCREMENT_PLAYER_SCORE',
@@ -19,6 +21,6 @@ export const clearScores = () => {
 export const getResults = () => {
     return {
         type: 'GET_RESULTS',
-        callGetApi: 'http://xo.leonovlab.ru/api/results.php',  // proxy fix problem with CORS https://cors-anywhere.herokuapp.com/
+        callGetApi: apiWay,
     }
 }

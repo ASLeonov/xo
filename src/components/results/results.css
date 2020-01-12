@@ -94,24 +94,9 @@
 
 .send_btn button {
     font-size: 130%;
-    box-sizing: border-box;
     min-height: 105px;
     padding: 12px;
-    color: black;
-    border: 1px solid grey;
-    border-radius: 4px;
-    outline: none;
     white-space: pre-line;
-    cursor: pointer;
-}
-
-.send_btn button:active {
-    border-width: 2px;
-}
-
-.send_btn button:disabled {
-    cursor: initial;
-    color: grey;
 }
 
 @media (max-width: 900px) {
