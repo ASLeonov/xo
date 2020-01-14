@@ -7,9 +7,9 @@
   background-color: antiquewhite;
   box-sizing: border-box;
   width: 100%;
+  height: 100%;
   max-width: 100%;
   min-width: 320px;
-  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -44,9 +44,9 @@ input:focus {
   } 
 }
 
-/* no styles for devices with little screen & landscape orientation */
-@media (max-width: 813px) and (orientation: landscape) {
+/* no styles for some devices with landscape orientation */
+/* @media (max-width: 813px) and (orientation: landscape) {
   .app-wrapper {
-    display: none;
+    top: 123vh;
   }
-}
+} */

@@ -3,14 +3,14 @@
     top: 10px;
     box-sizing: border-box;
     width: 220px;
-    min-height: calc(100vh - 20px);
+    min-height: 100%;
     border-right: 2px solid white;
     padding: 10px 16px 10px 10px;
     transition: left 0.9s;
 }
 
 .resultsWrapper_hide {
-    left: -136px;
+    left: -120px;
 }
 
 .resultsWrapper_show {
@@ -80,7 +80,25 @@
 
 .results_btn button {
     font-size: 220%;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 0 0 6px 0;
+    width: 70px;
+    height: 55px;
+    outline: none;
+    text-align: center;
     cursor: pointer;
+    transition: color 0.5s;
+}
+
+.results_btn_hide {
+    font-size: 88%;
+    padding-top: 6px;
+}
+
+.resultsWrapper_show .results_btn button {
+    color: black;
 }
 
 .send_btn {
@@ -107,7 +125,6 @@
 
 @media (max-width: 500px) {
     .resultsWrapper {
-        min-height: 100%;
         width: 98%;
         top: 5px;
         padding-top: 25px;
@@ -122,12 +139,23 @@
     }
     .results_btn {
         position: fixed;
-        left: 6%;
+        left: 5%;
         top: 20px;
         transition: all 0.5s;
     }
+    .results_btn button {
+        width: 45px;
+        padding-bottom: 2px;
+    }
+
+    .results_btn_hide {
+        font-size: 62%;
+        padding-right: 2px;
+        padding-top: 0;
+        transform: rotate(-90deg);
+    }
     .resultsWrapper_show .results_btn {
-        transform: rotate(20deg)
+        transform: rotate(90deg)
     }
     .results {
         width: 70%;
@@ -138,6 +166,10 @@
 @media (max-height: 670px) {
     .result_name, .result_score {
         margin: 6px 0;
+    }
+    .send_btn button {
+        min-height: 0;
+        white-space: unset;
     }
 }
 
@@ -151,9 +183,12 @@
     .result_name, .result_score {
         font-size: 110%;
         margin: 4px 0;
+    }  
+}
+
+/* no styles for some devices with landscape orientation */
+@media (max-width: 813px) and (orientation: landscape) {
+    .resultsWrapper {
+        display: none;
     }
-    .send_btn button {
-        min-height: 0;
-        white-space: unset;
-    }    
 }

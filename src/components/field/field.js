@@ -115,7 +115,6 @@ function Field(props) {
                     New game
                 </button>
                 {/* {console.log('render field')} */}
-                {/* <input autoFocus type='text' key='input'></input> */}
         </div>
     )
 }

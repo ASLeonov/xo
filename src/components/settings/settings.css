@@ -3,14 +3,14 @@
     top: 10px;
     box-sizing: border-box;
     width: 220px;
-    height: calc(100vh - 20px);
+    min-height: 100%;
     border-left: 2px solid white;
     padding: 10px 10px 10px 16px;
     transition: right 0.9s;
 }
 
 .settingsWrapper_hide {
-    right: -136px;
+    right: -120px;
 }
 
 .settingsWrapper_show {
@@ -43,14 +43,33 @@
     margin: 0 0 5px 0;
 }
 
+.input_wrapper {
+    position: relative;
+    margin-top: 10px;
+    text-align: center;
+}
+
 #playerName {
     box-sizing: border-box;
     width: 94%;
     padding: 4px;
     margin-bottom: 10px;
-    margin-top: 10px;
     border: 1px solid #9E9E9E;
     font-size: 130%;
+}
+
+.input_ok {
+    font-size: 155%;
+    font-weight: bold;
+    color: darkgreen;
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    transition: opacity 0.3s;
+}
+
+.input_ok_hide {
+    opacity: 0;
 }
 
 .settings_item button {
@@ -75,10 +94,30 @@
     cursor: pointer;
     margin: 0;
     font-weight: bold;
+    color: #014401;
 }
 
 .settings_btn button {
     font-size: 220%;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 0 0 6px 0;
+    width: 70px;
+    height: 55px;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+.settings_btn_hide {
+    font-size: 88%;
+    padding-top: 6px;
+}
+
+.settingsWrapper_show .settings_btn button {
+    color: black;
 }
 
 @media (max-width: 900px) {
@@ -91,7 +130,6 @@
 @media (max-width: 500px) {
 
     .settingsWrapper {
-        min-height: 100%;
         width: 98%;
         top: 5px;
         padding-top: 45px;
@@ -109,23 +147,57 @@
 
     .settings_btn {
         position: fixed;
-        right: 6%;
+        right: 5%;
         top: 20px;
         transition: all 0.5s;
     }
 
+    .settings_btn button {
+        width: 45px;
+        padding-bottom: 2px;
+    }
+
+    .settings_btn_hide {
+        font-size: 62%;
+        padding-left: 2px;
+        padding-top: 0;
+        transform: rotate(90deg);
+    }
+
     .settingsWrapper_show .settings_btn {
-        transform: rotate(-20deg)
+        transform: rotate(-90deg)
     }
 
     .settings_show {
-        width: 70%;
-        margin-left: 15%;
+        width: 80%;
+        margin-left: 10%;
     }
 
     .settings_hide {
-        width: 70%;
-        margin-left: 15%;
+        width: 80%;
+        margin-left: 10%;
     }
 
+    .input_wrapper {
+        width: 98%;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .settings_show {
+        width: 96%;
+        margin-left: 2%;
+    }
+    .settings_hide {
+        width: 96%;
+        margin-left: 2%;
+    }
+}
+
+/* styles for some devices with landscape orientation */
+@media (max-width: 813px) and (orientation: landscape) {
+    .settings_item:nth-child(n+2) {
+        display: none;
+    }
 }

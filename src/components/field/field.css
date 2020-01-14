@@ -40,7 +40,7 @@
 
 .field_footer {
     height: 100px;
-    max-width: 300px;
+    width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -60,77 +60,74 @@
   }
 
   @media (max-width: 500px) {
-      .field {
-          justify-content: space-between;
-      }
-    .field_footer {
-        height: 90px;
+    .field {
+        justify-content: space-between;
     }
-  }
-
-  @media (max-width: 500px) {
-
     .field_body-3 {
-        width: 350px !important;
-        height: 350px !important;
+        width: 328px !important;
+        height: 328px !important;
     }
 
     .field_body-4 {
-        width: 395px !important;
-        height: 395px !important;
+        width: 384px !important;
+        height: 384px !important;
+    }
+    .field_footer {
+        height: 75px;
     }
     .field_footer p {
         margin-bottom: 6px;
     }
     .reload {
+        height: 45px;
         margin-top: 0px;
     }
 
   }
 
   @media (max-width: 400px) {
-
     .field_body-3 {
         width: 330px !important;
         height: 330px !important;
     }
 
     .field_body-4 {
-        width: 370px !important;
-        height: 370px !important;
+        width: 365px !important;
+        height: 365px !important;
+    }
+    .field_footer {
+        height: 60px;
     }
     .reload {
         height: 40px;
     }
-
   }
 
   @media (max-width: 370px) {
-
     .field_body-3 {
-        width: 270px !important;
-        height: 270px !important;
+        width: 245px !important;
+        height: 245px !important;
     }
-
     .field_body-4 {
-        width: 314px !important;
-        height: 314px !important;
+        width: 294px !important;
+        height:294px !important;
     }
-
     .field_footer {
         font-size: 125%;
-        height: 65px;
-        max-width: 250px;
+        height: 55px;
     }
-
     .field_footer p {
         font-size: 90%;
     }
-
     .reload {
         height: 43px;
         font-size: 130%;
         margin-top: 5px;
       }
-  
-  }
+}
+
+@media (max-width: 813px) and (orientation: landscape) {
+    .field {
+        display: none;
+    }
+}

@@ -42,7 +42,9 @@ function Results(props) {
     return (
         <div className={classResultsWrapper}>
             <div className='results_btn'>
-                <button onClick={showResults} title={resultsVisible ? 'Hide results' : 'Show results'}>櫳</button>
+                <button onClick={showResults} title={resultsVisible ? 'Hide results' : 'Show results'}>
+                    {resultsVisible ? <div className='results_btn_hide'>hide</div> : 'Ⓡ'}
+                </button>
             </div>
             <div className={classResults}>
                 <div className='results'>
@@ -71,7 +73,7 @@ function Results(props) {
                     </div>
                 </div>
             </div>
-            {console.log('render Results')}
+            {/* {console.log('render Results')} */}
         </div>
     )
 }
