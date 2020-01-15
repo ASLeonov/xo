@@ -43,10 +43,3 @@ input:focus {
     padding-bottom: 5px;
   } 
 }
-
-/* no styles for some devices with landscape orientation */
-/* @media (max-width: 813px) and (orientation: landscape) {
-  .app-wrapper {
-    top: 123vh;
-  }
-} */
