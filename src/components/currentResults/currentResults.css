@@ -17,3 +17,34 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media (max-width: 500px) {
+    .currentResults {
+      padding-top: 5px;
+    }
+    .currentResults h2 {
+        margin-bottom: 0;
+    }
+    .currentResults h3 {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .currentResults {
+      padding-bottom: 10px;
+    } 
+}
+
+@media (max-width: 370px) {
+    .currentResults_scores h3 {
+        margin-top: 2px;
+    } 
+}
+
+/* no styles for some devices with landscape orientation */
+@media (max-width: 813px) and (orientation: landscape) {
+    .currentResults {
+        display: none;
+    }
+}

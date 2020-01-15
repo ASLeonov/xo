@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-// import {Drawer, Button} from 'antd'
 import './settings.css'
 
 class Settings extends Component {
     state = {
-        settingsVisible: false,         // Подумать про fadeIn - fadeOut...
+        settingsVisible: true,
         playerName: this.props.settings.playerName,
         playerSymbol: this.props.settings.playerSymbol,
         botSymbol: this.props.settings.botSymbol,
         fieldSize: this.props.settings.fieldSize,
+        innerPlayerName: '',
     }
 
     showSettings = () => {
@@ -16,24 +16,26 @@ class Settings extends Component {
             settingsVisible: !this.state.settingsVisible,
         })
     }
-
+    
     set_playerName = () => {
-        const new_playerName = document.getElementById('playerName').value
-        this.setState({
-            playerName: new_playerName,
-        })
-        this.props.onSettingsChange({
-            'playerName': new_playerName,
-            'playerSymbol': this.state.playerSymbol,
-            'fieldSize': this.state.fieldSize,
-            'botSymbol': this.state.botSymbol,
-            'playerStep': 'true',
-        })
+        const new_playerName = this.state.innerPlayerName.trim()
+        if (!new_playerName) return this.setState({innerPlayerName: ''})
+            this.setState({
+                playerName: new_playerName,
+                innerPlayerName: new_playerName,
+            })
+            this.props.onSettingsChange({
+                'playerName': new_playerName,
+                'playerSymbol': this.state.playerSymbol,
+                'fieldSize': this.state.fieldSize,
+                'botSymbol': this.state.botSymbol,
+                'playerStep': 'true',
+            })
     }
 
     change_playerSymbol = () => {
-        const newPlayerSymbol = this.state.playerSymbol === 'x' ? 'o' : 'x'
-        const newBotSymbol = newPlayerSymbol === 'x' ? 'o' : 'x'
+        const newPlayerSymbol = this.state.playerSymbol === 'X' ? 'O' : 'X'
+        const newBotSymbol = newPlayerSymbol === 'X' ? 'O' : 'X'
         this.setState({
             playerSymbol: newPlayerSymbol,
             botSymbol: newBotSymbol
@@ -61,21 +63,42 @@ class Settings extends Component {
         })
     }
 
+    changer = e => this.setState({innerPlayerName: e})
+
     render () {
-        const other_playerSymbol   = this.state.playerSymbol === 'x' ? 'o' : 'x'
+        const other_playerSymbol   = this.state.playerSymbol === 'X' ? 'O' : 'X'
         const other_fieldSize      = this.state.fieldSize === 3 ? 4 : 3
         const classSettingsWrapper = this.state.settingsVisible ? 'settingsWrapper settingsWrapper_show' : 'settingsWrapper settingsWrapper_hide'
         const classSettings        = this.state.settingsVisible ? 'settings_show' : 'settings_hide'
             return (
                 <div className={classSettingsWrapper}>
                     <div className='settings_btn'>
-                        <button onClick={this.showSettings} title={this.state.settingsVisible ? 'Hide settings' : 'Show settings'}>櫳</button>
+                        <button onClick={this.showSettings} title={this.state.settingsVisible ? 'Hide settings' : 'Show settings'}>
+                            {this.state.settingsVisible ? <div className='settings_btn_hide'>hide</div> : 'Ⓢ'}
+                        </button>
                     </div>
                     <div className={classSettings}>
                         <div className='settings_item'>
-                            <p className='settings_title'>Yor name:</p>
-                            <input id='playerName' placeholder='Enter your name' maxLength='12' type='text' onChange={this.set_playerName}>
-                            </input>
+                            <p className='settings_title'>Your name:</p>
+                                <div className='input_wrapper'>
+                                    <input
+                                        id='playerName'
+                                        onChange={event => this.setState({innerPlayerName: event.target.value.substr(0,12)})}   // substr fix bug with <input> maxlength on android
+                                        placeholder='Enter your name'
+                                        maxLength='12'
+                                        type='text'
+                                        value = {this.state.innerPlayerName}
+                                    >
+                                    </input>
+                                    <div className={`input_ok ${this.state.playerName && this.state.playerName === this.state.innerPlayerName ? '' : 'input_ok_hide'}`}>✓</div>
+                                </div>
+                                <button
+                                    className='btn'
+                                    onClick={this.set_playerName}
+                                    disabled={this.state.innerPlayerName && this.state.playerName !== this.state.innerPlayerName ? '' : 'disabled'}
+                                >
+                                    Set name
+                                </button>
                         </div>
                         <div className='settings_item'>
                             <p className='settings_title'>Your game chip:</p>
@@ -88,7 +111,7 @@ class Settings extends Component {
                             <p className='settings_symbols'onClick={this.change_fieldSize}>{other_fieldSize}</p>
                         </div>
                     </div>
-                    {/* {console.log('render settings')} */}
+                    {/* {console.log('render Settings')} */}
                 </div>
             )
     }

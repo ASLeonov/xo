@@ -22,7 +22,7 @@ function Field(props) {
                     blockKey ={resultObj[key]}
                     blockId = {key}
                     onChangeStep = {onChangeStep}
-                    style = {'block_endGame'}
+                    styleCSS = {'block_endGame'}
                 />
         }
     }
@@ -34,7 +34,7 @@ function Field(props) {
                 blockKey = {resultObj[key]}
                 blockId = {key}
                 onChangeStep = {onChangeStep}
-                style = {''}
+                styleCSS = {''}
             />
     }
 
@@ -96,24 +96,22 @@ function Field(props) {
             'NO WINNER ❋'
         : null
 
-    const disabledBtn = (playerStep || (!playerStep && gameState.result)) ? '' : 'disabled'
-
     const blockedBlockes = 
-    ( !playerStep )
-        ? <div className={`field_body-${fieldSize} field_body__blocked`}></div>
+    (!playerStep)
+        ? <div key='blockedBlockes' className={`field_body-${fieldSize} field_body__blocked`}></div>
             : null
 
     return (
-        <div className='field' >
-            <div className={`field_body field_body-${fieldSize}`}>
+        <div className='field' key='field'>
+            <div key='field_body' className={`field_body field_body-${fieldSize}`}>
                 {Object.values({...blocks})}
             </div>
                 {blockedBlockes}
-            <div className='field_footer'>
-                <p>{info_string_1}</p>
-                <p style={{fontWeight:'bold'}}>{info_string_2}</p>
+            <div key='field_footer' className='field_footer'>
+                <p key='p1'>{info_string_1}</p>
+                <p key='p2' style={{fontWeight:'bold'}}>{info_string_2}</p>
             </div>
-                <button className='reload' disabled={disabledBtn} onClick={reloadApp}>
+                <button key='button' className='reload btn' disabled={(playerStep || (!playerStep && gameState.result)) ? '' : 'disabled'} onClick={reloadApp}>
                     New game
                 </button>
                 {/* {console.log('render field')} */}

@@ -13,13 +13,13 @@
     line-height: normal;
 }
 
-.x {
+.X {
     width: 40px;
     height: 40px;
     background: no-repeat center/contain url(../../img/x.png);
 }
 
-.o {
+.O {
     width: 40px;
     height: 40px;
     background: no-repeat center/contain url(../../img/o.png);
@@ -36,16 +36,14 @@
 
 @media (max-width: 500px) {
 
-    .x {
+    .X {
         width: 35px;
         height: 35px;
-        background: no-repeat center/contain url(../../img/x.png);
     }
     
-    .o {
+    .O {
         width: 35px;
         height: 35px;
-        background: no-repeat center/contain url(../../img/o.png);
     }
 
     .block_endGame {
@@ -59,19 +57,30 @@
 
 }
 
-@media (max-width: 400px) {
-
+@media (max-width: 500px) {
     .block {
-        width: 85px;
-        height: 85px;
+        width: 86px;
+        height: 86px;
+    }
+}
+
+@media (max-width: 400px) {
+    .block {
+        width: 83px;
+        height: 83px;
     }
 }
 
 @media (max-width: 370px) {
-
     .block {
-        width: 70px;
-        height: 70px;
+        width: 65px;
+        height: 65px;
     }
- 
-  }
+    .block_endGame {
+        animation: fadeIn_endGame370 0.1s forwards;
+    }
+    @keyframes fadeIn_endGame370 {
+        0% {width: 35px; height: 35px}
+        100% {width: 47px; height: 47px}
+    }
+}

@@ -11,15 +11,15 @@ import {Provider} from 'react-redux'
 function App() {
   const [settings, setSettings] = useState({
     'playerName': '',
-    'playerSymbol': 'x',
+    'playerSymbol': 'X',
     'fieldSize': 3,   // max field size === 4; for increase this value -> necesarry correct checkResult & botStep functions
-    'botSymbol': 'o',//
+    'botSymbol': 'O',//
     'playerStep': true,
   })
 
   const onSettingsChange = newSettings => setSettings(newSettings)
 
-  const reloadApp = () => setSettings( { ...settings} )
+  const reloadApp = () => setSettings( {...settings} )
 
   return (
     <div className="app-wrapper">
@@ -31,7 +31,7 @@ function App() {
           <Results settings={settings} reloadApp={reloadApp} />
         </SettingsProvider>
       </Provider>
-      {console.log('render App')}
+      {/* {alert('render App')} */}
     </div>
   )
 }
